@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { CalculatorForm } from "./calculator/CalculatorForm";
+import { Counter } from "./counter";
+import { HelloWolrd } from "./HelloWorld";
+import "bootstrap/dist/css/bootstrap.min.css"
+import { People } from "./SWAPI/people";
+import { BrowserRouter as Router, Routes, Route, Link} from "react-router-dom" 
+import { Home } from "./SWAPI/home"
+import { Person } from "./SWAPI/person"
+import { Location } from "./RickAndMorty/location";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="container">
+        <nav className="navbar navbar-expand bg-body-tertiary">
+        <Link className="navbar-brand" to={"/"}>SWAPI</Link>
+          <div className="navbar-nav me-auto">
+            <Link className="nav-link" to={"/people"}>People</Link>
+            <Link className="nav-link" to={"/location"}>Location</Link>
+          </div>
+        </nav>
+      </div>
+      <Routes>
+        <Route path="/" element={<Home/>} />
+        <Route path="/people" element={<People/>} />
+        <Route path="/people/:id" element={<Person/>} />
+        <Route path="/location" element={<Location/>} />
+      </Routes>
+
+    </Router>
+
+    
+    
   );
 }
 
